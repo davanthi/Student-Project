@@ -1,24 +1,32 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
+import {register} from '../calls/authCalls.js'
+
 function Signup() {
+  const onFinish = async(values) => {
+    const response= await register(values);
+    console.log(response)
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
     <div className="signup-form">
-
       <Form
         name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         style={{ maxWidth: 600 }}
-        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
       >
-       <Form.Item
-      label={null}
-        >
-         <h1>Register</h1>
-       </Form.Item>
+        <Form.Item label={null}>
+          <h1>Register</h1>
+        </Form.Item>
         <Form.Item
           label="Username"
-          name="username"
+          name="userName"
           rules={[{ required: true, message: "Please Enter username!" }]}
         >
           <Input />
