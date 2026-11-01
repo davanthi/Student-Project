@@ -6,8 +6,19 @@ const api = axios.create({
 export const register = async (values) => {
   try {
     const response = await api.post("/api/auth/register", values);
+    
+    localStorage.setItem('user',JSON.stringify(response.data.user))
     return response;
   } catch (error) {
     console.log(error);
   }
 };
+export const login=async(values)=>{
+ try {
+  const response=await api.post("/api/auth/login",values)
+  localStorage.setItem('user',JSON.stringify(response.data.user))
+  return response;
+ } catch (error) {
+  console.log(error)
+ }
+}

@@ -2,9 +2,10 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="footer">
-      <h1>student-footer</h1>
-    </div>
+    <footer className="site-footer">
+      <p>CampusDesk student management</p>
+      <p>Keep records tidy. Keep families informed.</p>
+    </footer>
   );
 }
 
